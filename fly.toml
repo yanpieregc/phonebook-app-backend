@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for phonebook-backend-app on 2026-05-11T16:33:22-05:00
+# fly.toml app configuration file generated for phonebook-backend-app on 2026-06-02T15:53:50-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -9,12 +9,12 @@ primary_region = 'gru'
 [build]
 
 [env]
-  PORT = "3001"
+  PORT = '3001'
 
 [http_service]
   internal_port = 3001
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']

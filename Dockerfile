@@ -12,6 +12,8 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 
+# Install node modules
+RUN npm install -g pnpm 
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
@@ -20,16 +22,12 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
-# Install node modules
-RUN npm install -g pnpm 
-
 COPY package.json pnpm-lock.yaml ./
 
 RUN pnpm install --frozen-lockfile
 
 # Copy application code
 COPY . .
-
 
 # Final stage for app image
 FROM base
