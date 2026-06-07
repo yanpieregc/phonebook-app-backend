@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 mongoose.set('strictQuery', false)
 
 const url = process.env.MONGODB_URI
-console.log('connected to: ', url)
 
 mongoose.connect(url)
   .then(() => {
